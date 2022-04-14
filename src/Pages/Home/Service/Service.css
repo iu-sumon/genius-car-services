@@ -1,0 +1,36 @@
+.service-cart
+{
+    width: 385px;
+    height: 440px;
+    padding: 10px;
+    border-radius: 5px;
+    border: 2px solid rgb(206, 200, 200);
+    text-align: center;
+}
+.service-cart img{
+    border-radius: 5px;
+}
+.btn-service
+{
+    width:100%;
+    height: 41px;
+    margin: 0px auto;
+    background-color: blue;
+    color: white;
+    font-weight: 500;
+    border-radius: 5px;
+}
+@media only screen  and (max-width:576px)
+{
+    .service-cart
+{
+    width: 250px;
+    height: 480px;
+     margin: 0px auto;
+}
+.service-cart img
+{
+    width: 200px;
+    height: 200px;
+}
+}
