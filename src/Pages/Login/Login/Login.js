@@ -11,6 +11,7 @@ import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import axios from 'axios';
 import Loading from '../../Shared/Loading/Loading';
+import useToken from '../../../hooks/useToken';
 const Login = () => {
     const emailRef = useRef()
     const passwordRef = useRef()
@@ -27,12 +28,12 @@ const Login = () => {
     ] = useSignInWithEmailAndPassword(auth);
 
     const [sendPasswordResetEmail, sending] = useSendPasswordResetEmail(auth);
-
+    const [token] = useToken(user)
     if (loading || sending) {
         return <Loading></Loading>
     }
-    if (user) {
-        //navigate(from, { replace: true });
+    if (token) {
+        navigate(from, { replace: true });
     }
     if (error) {
 
@@ -50,13 +51,7 @@ const Login = () => {
         const password = passwordRef.current.value;
 
         await signInWithEmailAndPassword(email, password)
-
-        const { data } = await axios.post('https://quiet-cove-29243.herokuapp.com/login', { email });
-        localStorage.setItem('accessToken', data.accessToken);
-        console.log(data);
-        navigate(from, { replace: true });
-
-    }
+ }
 
 
 
